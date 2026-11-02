@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class Zadanie2 : MonoBehaviour
 {
     [SerializeField] private List<GameObject> objects;
+   // public Gradient gradient;
     
     void Start()
     {
@@ -25,11 +27,26 @@ public class Zadanie2 : MonoBehaviour
             if (objectToCheck.GetComponent<MeshRenderer>()) 
             {
                 Debug.Log("3D");
+                Cube(objectToCheck.transform);
             }
             else if (objectToCheck.GetComponent<SpriteRenderer>())
             {
                 Debug.Log("2D");
+                Sprite(objectToCheck.GetComponent<SpriteRenderer>());
             }
         }
     }
+
+    public void Sprite(SpriteRenderer sprite)
+    {
+        float y = Mathf.InverseLerp(1, 100, sprite.transform.position.y);
+        sprite.color = Color.Lerp(Color.blue, Color.red, y);
+    }
+
+    public void Cube(Transform transformCube)
+    {
+        float x = transformCube.position.x;
+        transformCube.rotation = Quaternion.Euler(x, 0, 0);
+    }
+   
 }
