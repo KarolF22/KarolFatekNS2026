@@ -6,7 +6,7 @@ using UnityEngine;
 public class Zadanie2 : MonoBehaviour
 {
     [SerializeField] private List<GameObject> objects;
-   // public Gradient gradient;
+    public Gradient gradient;
     
     void Start()
     {
@@ -40,7 +40,10 @@ public class Zadanie2 : MonoBehaviour
     public void Sprite(SpriteRenderer sprite)
     {
         float y = Mathf.InverseLerp(1, 100, sprite.transform.position.y);
-        sprite.color = Color.Lerp(Color.blue, Color.red, y);
+        //sprite.color = Color.Lerp(Color.blue, Color.red, y);
+        
+        sprite.color = gradient.Evaluate(y);
+
     }
 
     public void Cube(Transform transformCube)
