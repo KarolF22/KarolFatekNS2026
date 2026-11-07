@@ -10,14 +10,14 @@ public class Zadanie2 : MonoBehaviour
     
     void Start()
     {
-        CheckDimension();
+        //CheckDimension();
         
     }
 
     
     void Update()
     {
-        
+        CheckDimension();
     }
 
     private void CheckDimension()
@@ -48,7 +48,7 @@ public class Zadanie2 : MonoBehaviour
 
     public void Cube(Transform transformCube)
     {
-        float x = transformCube.position.x;
+        float x = transformCube.position.x / 10 * 360;
         transformCube.rotation = Quaternion.Euler(x, 0, 0);
     }
    
